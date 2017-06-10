@@ -1,0 +1,244 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/XcjR8MQPHo-gVlznAiupBZCDAi4\"",
+ "discoveryVersion": "v1",
+ "id": "studentApi:v1",
+ "name": "studentApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.myapplication.gufran.example.com",
+ "ownerName": "backend.myapplication.gufran.example.com",
+ "icons": {
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rpcUrl": "https://myApplicationId.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Address": {
+   "id": "Address",
+   "type": "object",
+   "properties": {
+    "city": {
+     "type": "string"
+    },
+    "houseNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "streetName": {
+     "type": "string"
+    }
+   }
+  },
+  "CollectionResponse_Student": {
+   "id": "CollectionResponse_Student",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Student"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Student": {
+   "id": "Student",
+   "type": "object",
+   "properties": {
+    "address": {
+     "$ref": "Address"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "studentApi.get": {
+   "id": "studentApi.get",
+   "allowGet": true,
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "returns": {
+    "$ref": "Student"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "studentApi.insert": {
+   "id": "studentApi.insert",
+   "parameters": {
+    "resource": {
+     "$ref": "Student"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "Student"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "studentApi.list": {
+   "id": "studentApi.list",
+   "allowGet": true,
+   "parameters": {
+    "cursor": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "returns": {
+    "$ref": "CollectionResponse_Student"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "studentApi.patch": {
+   "id": "studentApi.patch",
+   "supportsPatch": true,
+   "parameters": {
+    "address": {
+     "$ref": "Address"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "returns": {
+    "$ref": "Student"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "studentApi.remove": {
+   "id": "studentApi.remove",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "studentApi.update": {
+   "id": "studentApi.update",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    },
+    "resource": {
+     "$ref": "Student"
+    }
+   },
+   "parameterOrder": [
+    "resource",
+    "id"
+   ],
+   "returns": {
+    "$ref": "Student"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
