@@ -13,6 +13,8 @@ public class Parent {
     private Long id;
     private String parentName;
 
+    public Parent() {
+    }
 
     public Long getId() {
         return id;
